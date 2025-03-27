@@ -27,6 +27,7 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
       ...this.t,
       title: "Title",
     };
+
     this.registerLocalization({
       context: this,
       localesPath:
@@ -41,6 +42,10 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      image: {type: String},
+      url: {type: String},
+      button: {type: String},
+
     };
   }
 
@@ -49,21 +54,43 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
     return [super.styles,
     css`
       :host {
-        display: flex;
-        color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
-        font-family: var(--ddd-font-navigation);
+      display: inline-flex;
+      color: var(--ddd-theme-primary-2);
+      font-family: var('--ddd-font-primary', sans-serif);
+      padding: var(--ddd-spacing-16);
+      max-width: 250px;
+      border: 4px solid white;
       }
+      
+      /** 
       .wrapper {
-        margin: var(--ddd-spacing-4);
-        padding: var(--ddd-spacing-4);
+        margin: var(--ddd-spacing-8);
+        padding: var(--ddd-spacing-8);
       }
+        */
+      
+      
       h3 span {
         font-size: var(--ddd-card-list-label-font-size, var(--ddd-font-size-s));
       }
 
-      
+      .image{
+      width: 100%;
+      height: 100%;
+      display: block;
+      justify-content: center;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--ddd-theme-primary-2);
+      color: white;
+      padding: var(--ddd-spacing-8);
+      border-radius: 4px;
+      text-decoration: none;
 
+    }
 
 
 
@@ -71,13 +98,17 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
   }
 
 
-
   // Lit render the HTML
   render() {
     return html`
 <div class="wrapper">
-  <h3><span>${this.t.title}:</span> ${this.title}</h3>
-</div>`;
+<div class="image"> <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjJoR3uzS2GS_KVfRbu6xI4yrvqto2iivTNQ&s"/>
+<slot>Testing testing testing Testing testing testing </slot>
+
+<div class="button"></div>
+</div>
+</div>`
+;
   }
 
   
