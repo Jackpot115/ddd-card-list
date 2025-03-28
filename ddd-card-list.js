@@ -1,4 +1,4 @@
-/**
+/** 
  * Copyright 2025 Matt C
  * @license Apache-2.0, see LICENSE for full text.
  */
@@ -42,76 +42,114 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
-      image: {type: String},
-      url: {type: String},
-      button: {type: String},
-
+      image: { type: String },
+      url: { type: String },
+      button: { type: String },
     };
   }
 
   // Lit scoped styles
   static get styles() {
-    return [super.styles,
-    css`
-      :host {
-      display: inline-flex;
-      color: var(--ddd-theme-primary-2);
-      font-family: var('--ddd-font-primary', sans-serif);
-      padding: var(--ddd-spacing-16);
-      max-width: 250px;
-      border: 4px solid white;
-      }
-      
-      /** 
-      .wrapper {
-        margin: var(--ddd-spacing-8);
-        padding: var(--ddd-spacing-8);
-      }
-        */
-      
-      
-      h3 span {
-        font-size: var(--ddd-card-list-label-font-size, var(--ddd-font-size-s));
-      }
+    return [
+      super.styles,
+      css`
+        :host {
+          display: inline-flex;
+          flex-wrap: wrap;
+          gap: 16px;
+          padding: var(--ddd-spacing-16);
+          max-width: 300px;
+          border: 4px solid white;
+          flex-direction: inline-flex;
+          transition: all 0.3s ease;
+        }
 
-      .image{
-      width: 100%;
-      height: 100%;
-      display: block;
-      justify-content: center;
-    }
-    .button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: var(--ddd-theme-primary-2);
-      color: white;
-      padding: var(--ddd-spacing-8);
-      border-radius: 4px;
-      text-decoration: none;
+        h3 span {
+          font-size: var(--ddd-card-list-label-font-size, var(--ddd-font-size-s));
+        }
 
-    }
+        .image {
+          width: 100%;
+          height: auto;
+          display: block;
+          justify-content: center;
+        }
 
+        .button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: blue;
+          color: white;
+          padding: 10px;
+          border-radius: 4px;
+          text-decoration: none;
+          width: 100%;
+          cursor: pointer;
+        }
 
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          :host {
+            max-width: 100%;
+            padding: var(--ddd-spacing-8);
+          }
+          
+          .image img {
+            width: 100%;
+            height: auto;
+          }
 
-    `];
+          .button {
+            width: 100%;
+            padding: 8px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          :host {
+            max-width: 100%;
+            padding: var(--ddd-spacing-4);
+          }
+
+          .image img {
+            width: 100%;
+            height: auto;
+          }
+
+          .button {
+            padding: 6px;
+          }
+          
+        }
+      `,
+    ];
   }
 
+  handleButtonClick() {
+    window.open("https://www.youtube.com", "_blank");
+  }
 
   // Lit render the HTML
   render() {
     return html`
-<div class="wrapper">
-<div class="image"> <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjJoR3uzS2GS_KVfRbu6xI4yrvqto2iivTNQ&s"/>
-<slot>Testing testing testing Testing testing testing </slot>
-
-<div class="button"></div>
-</div>
-</div>`
-;
+      <div class="wrapper">
+        <div class="image">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjJoR3uzS2GS_KVfRbu6xI4yrvqto2iivTNQ&s"
+          />
+          <h3>Abington</h3>
+          <slot>
+            Close to Philadelphia, Penn State Abington's suburban campus offers
+            bachelor's degrees, athletics, and a diverse student community.
+          </slot>
+          <button class="button" @click="${this.handleButtonClick}"
+            >Explore ></button
+          >
+        </div>
+      </div>
+    `;
   }
-
-  
 
   /**
    * haxProperties integration via file reference
