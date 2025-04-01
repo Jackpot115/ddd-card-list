@@ -25,6 +25,7 @@ export class DddCard extends DDD {
       image: { type: String },
       url: { type: String },
       button: { type: String },
+      description: { type: String },
     };
   }
 
@@ -104,28 +105,16 @@ export class DddCard extends DDD {
             padding: var(--ddd-spacing-4);
           }
 
-          .image img {
+          .image {
           width: 300px;
           height: 300px;
-          border-radius: var(--ddd-border-radius, 8px);
           }
 
           .button {
             padding: 6px;
           }
 
-          .title-bar {
-          padding: var(--ddd-spacing-2);
-          color: var(--component-color, var(--ddd-theme-default-link));
-          border: var(--ddd-border-sm);
-          border-color: var(
-            --component-border-color,
-            var(--ddd-theme-default-link)
-          );
-          font-weight: bold;
-        }
-          
-          
+        
         }
       `,
     ];
@@ -143,13 +132,11 @@ export class DddCard extends DDD {
         <img src="${this.image}" alt="${this.title || "Card image"}" />
          <div>
 
-         <div class="title-bar">${this.title}</div>
-
           <h3>${this.title}</h3>
-          
-            Close to Philadelphia, Penn State Abington's suburban campus offers
-            bachelor's degrees, athletics, and a diverse student community.
-  </div>
+          </div>
+          <div class="description">
+            <slot></slot>
+          </div>
           <button class="button" @click="${this.handleButtonClick}"
             >Explore ></button
           >
