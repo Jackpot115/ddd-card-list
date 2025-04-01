@@ -33,27 +33,43 @@ export class DddCard extends DDD {
     return [
       super.styles,
       css`
-        :host {
+       :host {
           display: inline-flex;
-          flex-wrap: wrap;
-          gap: 16px;
-          padding: var(--ddd-spacing-16);
+          border: 1px solid var(--ddd-border-color, #ccc);
+          border-radius: var(--ddd-border-radius, 8px);
+          padding: var(--ddd-spacing-3);
           max-width: 300px;
-          border: 4px solid white;
-          flex-direction: inline-flex;
-          transition: all 0.3s ease;
+          text-align: center;
+          --component-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-link)
+          );
+          --component-border-color: var(--component-color);
+          --component-background-color: var(
+            --lowContrast-override,
+            var(
+              --ddd-theme-accent,
+              var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
+            )
+            transition: all 0.3s ease;
+          );
         }
+        
 
 
         h3 span {
           font-size: var(--ddd-card-label-font-size, var(--ddd-font-size-s));
         }
 
+        .wrapper {
+          width: var(--ddd-spacing-64);
+          height: var(--ddd-spacing-64);
+        }
+
         .image {
-          width: 100%;
+          width: auto;
           height: auto;
-          display: block;
-          justify-content: center;
+        
         }
 
         .button {
@@ -75,11 +91,6 @@ export class DddCard extends DDD {
             max-width: 100%;
             padding: var(--ddd-spacing-8);
           }
-          
-          .image img {
-            width: 100%;
-            height: auto;
-          }
 
           .button {
             width: 100%;
@@ -94,13 +105,25 @@ export class DddCard extends DDD {
           }
 
           .image img {
-            width: 100%;
-            height: auto;
+          width: 300px;
+          height: 300px;
+          border-radius: var(--ddd-border-radius, 8px);
           }
 
           .button {
             padding: 6px;
           }
+
+          .title-bar {
+          padding: var(--ddd-spacing-2);
+          color: var(--component-color, var(--ddd-theme-default-link));
+          border: var(--ddd-border-sm);
+          border-color: var(
+            --component-border-color,
+            var(--ddd-theme-default-link)
+          );
+          font-weight: bold;
+        }
           
           
         }
@@ -117,11 +140,13 @@ export class DddCard extends DDD {
     return html`
       <div class="wrapper">
         <div class="image">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjJoR3uzS2GS_KVfRbu6xI4yrvqto2iivTNQ&s"
-          />
-          <h3>Abington</h3>
-          <div>
+        <img src="${this.image}" alt="${this.title || "Card image"}" />
+         <div>
+
+         <div class="title-bar">${this.title}</div>
+
+          <h3>${this.title}</h3>
+          
             Close to Philadelphia, Penn State Abington's suburban campus offers
             bachelor's degrees, athletics, and a diverse student community.
   </div>
