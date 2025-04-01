@@ -58,69 +58,10 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
           flex-wrap: wrap;
           gap: 16px;
           padding: var(--ddd-spacing-16);
-          max-width: 300px;
+          width: var(--ddd-spacing-64);
           border: 4px solid white;
           flex-direction: inline-flex;
           transition: all 0.3s ease;
-        }
-
-        h3 span {
-          font-size: var(--ddd-card-list-label-font-size, var(--ddd-font-size-s));
-        }
-
-        .image {
-          width: 100%;
-          height: auto;
-          display: block;
-          justify-content: center;
-        }
-
-        .button {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: blue;
-          color: white;
-          padding: 10px;
-          border-radius: 4px;
-          text-decoration: none;
-          width: 100%;
-          cursor: pointer;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-          :host {
-            max-width: 100%;
-            padding: var(--ddd-spacing-8);
-          }
-          
-          .image img {
-            width: 100%;
-            height: auto;
-          }
-
-          .button {
-            width: 100%;
-            padding: 8px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          :host {
-            max-width: 100%;
-            padding: var(--ddd-spacing-4);
-          }
-
-          .image img {
-            width: 100%;
-            height: auto;
-          }
-
-          .button {
-            padding: 6px;
-          }
-          
         }
       `,
     ];
@@ -134,19 +75,7 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
       <div class="wrapper">
-        <div class="image">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjJoR3uzS2GS_KVfRbu6xI4yrvqto2iivTNQ&s"
-          />
-          <h3>Abington</h3>
-          <slot>
-            Close to Philadelphia, Penn State Abington's suburban campus offers
-            bachelor's degrees, athletics, and a diverse student community.
-          </slot>
-          <button class="button" @click="${this.handleButtonClick}"
-            >Explore ></button
-          >
-        </div>
+        <slot></slot>
       </div>
     `;
   }
