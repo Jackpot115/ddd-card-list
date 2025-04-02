@@ -42,7 +42,6 @@ export class DddCard extends DDD {
           max-width: 300px;
           text-align: center;
           --component-color: var(--ddd-theme-primary, var(--ddd-theme-default-link)
- 
           );
          
         }
@@ -124,15 +123,18 @@ export class DddCard extends DDD {
             max-width: 100%;
             padding: var(--ddd-spacing-4);
           }
-
-        
-
           .button {
             padding: 6px;
           }
-
-        
         }
+
+
+
+
+
+
+
+
       `,
     ];
   }
