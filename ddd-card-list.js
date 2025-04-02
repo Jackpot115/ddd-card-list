@@ -54,22 +54,17 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
       super.styles,
       css`
         :host {
-          display: inline-flex;
+          display: grid;
           flex-wrap: wrap;
           gap: 16px;
           padding: var(--ddd-spacing-16);
           width: var(--ddd-spacing-64);
-          border: 4px solid white;
-          flex-direction: inline-flex;
           transition: all 0.3s ease;
         }
       `,
     ];
   }
 
-  handleButtonClick() {
-    window.open("https://www.youtube.com", "_blank");
-  }
 
   // Lit render the HTML
   render() {

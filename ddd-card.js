@@ -36,26 +36,50 @@ export class DddCard extends DDD {
       css`
        :host {
           display: inline-flex;
-          border: 1px solid var(--ddd-border-color, #ccc);
+          border: 1px solid var(--ddd-border-color, white);
           border-radius: var(--ddd-border-radius, 8px);
           padding: var(--ddd-spacing-3);
           max-width: 300px;
           text-align: center;
-          --component-color: var(
-            --ddd-theme-primary,
-            var(--ddd-theme-default-link)
+          --component-color: var(--ddd-theme-primary, var(--ddd-theme-default-link)
+ 
           );
-          --component-border-color: var(--component-color);
-          --component-background-color: var(
-            --lowContrast-override,
-            var(
-              --ddd-theme-accent,
-              var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
-            )
-            transition: all 0.3s ease;
-          );
+         
         }
         
+        .card {
+          display: flex;
+          flex-flow: column;
+          height: 100%;
+          max-width: 500px;
+          margin: auto;
+          border-width: 0px;
+          box-sizing: border-box;
+          background-color: var(--ddd-theme-default-roarLight);
+          transition: all 0.3s ease;
+
+        }
+
+        .card img {
+          width: auto;
+          height: auto;
+          object-fit: cover;
+          aspect-ratio: 3/2;
+          max-width: 100%;
+          height: auto;
+          border-top-left-radius: var(--ddd-radius-sm);
+          border-top-right-radius: var(--ddd-radius-sm);
+        }
+
+        .card #color-line {
+          display: flex;
+          border-top-width: 12px;
+          border-bottom-width: 0px;
+          box-sizing: content-box;
+          border-style: solid;
+          border-color: var(--ddd-theme-default-forestGreen);
+
+        }
 
 
         h3 span {
@@ -67,11 +91,7 @@ export class DddCard extends DDD {
           height: var(--ddd-spacing-64);
         }
 
-        .image {
-          width: auto;
-          height: auto;
         
-        }
 
         .button {
           display: flex;
@@ -105,10 +125,7 @@ export class DddCard extends DDD {
             padding: var(--ddd-spacing-4);
           }
 
-          .image {
-          width: 300px;
-          height: 300px;
-          }
+        
 
           .button {
             padding: 6px;
@@ -127,20 +144,17 @@ export class DddCard extends DDD {
   // Lit render the HTML
   render() {
     return html`
-      <div class="wrapper">
-        <div class="image">
+      <div class="card">
         <img src="${this.image}" alt="${this.title || "Card image"}" />
-         <div>
+
+        <div id="color-line"></div>
 
           <h3>${this.title}</h3>
-          </div>
-          <div class="description">
-            <slot></slot>
-          </div>
-          <button class="button" @click="${this.handleButtonClick}"
-            >Explore ></button
-          >
-        </div>
+
+          <p>${this.description}</p>
+
+          <button class="button" @click="${this.handleButtonClick}">Explore ></button>
+
       </div>
     `;
   }
