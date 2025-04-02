@@ -54,12 +54,40 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
       super.styles,
       css`
         :host {
-          display: grid;
-          flex-wrap: wrap;
-          gap: 16px;
-          padding: var(--ddd-spacing-16);
-          width: var(--ddd-spacing-64);
-          transition: all 0.3s ease;
+          display: block;
+          border-radius: var(--ddd-border-radius, 8px);
+          padding: var(--ddd-spacing-3);
+          color: var(--ddd-theme-primary);
+          background-color: var(--ddd-theme-accent);
+          font-family: var(--ddd-font-navigation);
+        }
+        .wrapper {
+          margin: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-4);
+        }
+        .title-bar {
+          padding: var(--ddd-spacing-2);
+          font-weight: bold;
+        }
+        div ::slotted(*) {
+          display: inline-block;
+        }
+        h3 span {
+          font-size: var(
+            --ddd-card-list-label-font-size,
+            var(--ddd-font-size-s)
+          );
+          border-bottom: var(--ddd-spacing-1) solid var(--ddd-theme-primary);
+        }
+        .ddd-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 10px;
+          border: 1px solid var(--ddd-theme-primary);
+          border-radius: 10px;
+          background-color: var(--ddd-theme-accent);
         }
       `,
     ];
