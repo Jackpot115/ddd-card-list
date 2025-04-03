@@ -72,7 +72,7 @@ export class DddCard extends DDD {
           border-bottom-width: 0px;
           box-sizing: content-box;
           border-style: solid;
-          border-color: var(--ddd-theme-default-beaverBlue);
+          border-color: var(--ddd-theme-default-nittanyNavy);
         }
 
         
@@ -93,7 +93,7 @@ export class DddCard extends DDD {
           display: inline-flex;
           justify-content: center;
           align-items: center;
-          background-color: blue;
+          background-color: var(--ddd-theme-default-beaverBlue);
           height: 50px;
           color: var(--ddd-theme-default-white);
           border-radius: 8px;
