@@ -75,6 +75,8 @@ export class DddCard extends DDD {
           border-color: var(--ddd-theme-default-beaverBlue);
         }
 
+        
+
 
         h3 span {
           font-size: var(--ddd-card-label-font-size, var(--ddd-font-size-s));
