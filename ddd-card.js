@@ -43,16 +43,16 @@ export class DddCard extends DDD {
         .card {
           display: flex;
           flex-flow: column;
-          height: 100%;
-          max-width: 400px;
+          height: auto;
+          max-width: 500px;
           margin: auto;
           border-width: 0px;
           box-sizing: border-box;
           background-color: var(--ddd-theme-default-white);
-          transition: all 0.3s ease;
           color: black;
           border-top-left-radius: var(--ddd-radius-sm);
           border-top-right-radius: var(--ddd-radius-sm);
+          transition: all 0.3s ease;
         }
 
         .card img {
@@ -76,28 +76,31 @@ export class DddCard extends DDD {
         }
 
         
-
-
         h3 span {
           font-size: var(--ddd-card-label-font-size, var(--ddd-font-size-s));
         }
 
-        .wrapper {
-          width: var(--ddd-spacing-64);
-          height: var(--ddd-spacing-64);
+        #bottom-card {
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          padding: var(--ddd-spacing-2);
         }
-
         
 
+        
         .button {
-          display: flex;
+          display: inline-flex;
           justify-content: center;
           align-items: center;
           background-color: blue;
+          height: 50px;
           color: var(--ddd-theme-default-white);
-          padding: 12px;
-          border-radius: 4px;
+          border-radius: 8px;
+          border: 2px solid;
+          max-width: 450px;
           text-decoration: none;
+          font-size: 16px;
           width: 100%;
           cursor: pointer;
         }
@@ -107,13 +110,11 @@ export class DddCard extends DDD {
             max-width: 100%;
             padding: var(--ddd-spacing-8);
           }
-
           .button {
             width: 100%;
             padding: 8px;
           }
         }
-
         @media (max-width: 1000px) {
           :host {
             max-width: 100%;
@@ -141,13 +142,19 @@ export class DddCard extends DDD {
 
         <div id="color-line"></div>
 
-          <h3>${this.title}</h3>
+        <h3>${this.title}</h3>
 
           <p>${this.description}</p>
+   
+        <div id=bottom-card>
+
+          
 
           <button class="button" @click="${this.handleButtonClick}">Explore ></button>
 
+          </div>
       </div>
+  </div>
     `;
   }
 
