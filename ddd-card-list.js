@@ -61,10 +61,7 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
           background-color: var(--ddd-theme-accent);
           font-family: var(--ddd-font-navigation);
         }
-        .wrapper {
-          margin: var(--ddd-spacing-2);
-          padding: var(--ddd-spacing-4);
-        }
+    
         .title-bar {
           padding: var(--ddd-spacing-2);
           font-weight: bold;
@@ -81,23 +78,44 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
         }
         .ddd-wrapper {
           display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
+          flex-wrap: wrap;
+          gap: 16px; /* Space between items */
+          justify-content: center; /* Center items properly */
           padding: 10px;
           border: 1px solid var(--ddd-theme-primary);
-          border-radius: 10px;
           background-color: var(--ddd-theme-accent);
         }
-      `,
+
+/* Ensure exactly 3 cards per row */
+::slotted(*) {
+  flex: 1 1 calc(33.333% - 16px);
+  max-width: calc(33.333% - 16px);
+  box-sizing: border-box; /* Prevent overflow issues */
+}
+
+/* When screen width is smaller, switch to 2 per row */
+@media screen and (max-width: 900px) {
+  ::slotted(*) {
+    flex: 1 1 calc(50% - 16px);
+    max-width: calc(50% - 16px);
+  }
+}
+
+/* When screen is very small, stack items in 1 column */
+@media screen and (max-width: 600px) {
+  ::slotted(*) {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+  `,
     ];
   }
-
 
   // Lit render the HTML
   render() {
     return html`
-      <div class="wrapper">
+      <div class="ddd-wrapper">
         <slot></slot>
       </div>
     `;
