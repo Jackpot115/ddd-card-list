@@ -85,7 +85,6 @@ export class DddCard extends DDD {
           padding: var(--ddd-spacing-2);
           margin: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-2);
-          background-color: var(--ddd-theme-accent);
           justify-content: space-between;
         }
         

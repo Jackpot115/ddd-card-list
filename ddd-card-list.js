@@ -51,7 +51,6 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
           border-radius: var(--ddd-border-radius, 8px);
           padding: var(--ddd-spacing-3);
           color: var(--ddd-theme-primary);
-          background-color: var(--ddd-theme-accent);
           font-family: var(--ddd-font-navigation);
         }
     
