@@ -21,20 +21,7 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
-    this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/ddd-card-list.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
+    this.backgroundcolor = "";
   }
 
   // Lit reactive properties
@@ -45,6 +32,12 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
       image: { type: String },
       url: { type: String },
       button: { type: String },
+      backgroundcolor: { 
+        type: String,
+        relfect: true,
+        DDDDataAttributes: "data-accent"
+
+      },
     };
   }
 
@@ -64,36 +57,34 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
     
         .title-bar {
           padding: var(--ddd-spacing-2);
-          font-weight: bold;
+          font-weight: var(--ddd-font-weight-bold);
         }
         div ::slotted(*) {
           display: inline-block;
         }
         h3 span {
           font-size: var(
-            --ddd-card-list-label-font-size,
-            var(--ddd-font-size-s)
+            --ddd-card-list-label-font-size, var(--ddd-font-size-s)
           );
           border-bottom: var(--ddd-spacing-1) solid var(--ddd-theme-primary);
         }
         .ddd-wrapper {
           display: flex;
           flex-wrap: wrap;
-          gap: 16px; /* Space between items */
-          justify-content: center; /* Center items properly */
-          padding: 10px;
-          border: 1px solid var(--ddd-theme-primary);
+          gap: var(--ddd-spacing-4); 
+          justify-content: center; 
+          padding: var(--ddd-spacing-2);
           background-color: var(--ddd-theme-accent);
         }
 
-/* Ensure exactly 3 cards per row */
+/* Ensures that exactly 3 cards are per row */
 ::slotted(*) {
   flex: 1 1 calc(33.333% - 16px);
   max-width: calc(33.333% - 16px);
-  box-sizing: border-box; /* Prevent overflow issues */
+  box-sizing: border-box; 
 }
 
-/* When screen width is smaller, switch to 2 per row */
+/* When the screen width is smaller, switch to 2 per row */
 @media screen and (max-width: 900px) {
   ::slotted(*) {
     flex: 1 1 calc(50% - 16px);
@@ -101,7 +92,7 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
   }
 }
 
-/* When screen is very small, stack items in 1 column */
+/* When the screen is very small, stack items in 1 column */
 @media screen and (max-width: 600px) {
   ::slotted(*) {
     flex: 1 1 100%;

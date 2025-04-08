@@ -43,13 +43,12 @@ export class DddCard extends DDD {
         .card {
           display: flex;
           flex-flow: column;
-          height: auto;
           max-width: 500px;
-          margin: auto;
-          border-width: 0px;
+          margin: var(--ddd-spacing-0);
+          border-width: var(--ddd--border-size-xs);
           box-sizing: border-box;
           background-color: var(--ddd-theme-default-white);
-          color: black;
+          color: var(--ddd-theme-default-coalGray);
           border-top-left-radius: var(--ddd-radius-sm);
           border-top-right-radius: var(--ddd-radius-sm);
           transition: all 0.3s ease;
@@ -83,12 +82,15 @@ export class DddCard extends DDD {
         #bottom-card {
           display: flex;
           flex-flow: column;
-          align-items: center;
+          /* height: 315px; */
           padding: var(--ddd-spacing-2);
+          margin: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-2);
+          background-color: var(--ddd-theme-accent);
+          justify-content: space-between;
         }
         
 
-        
         .button {
           display: inline-flex;
           justify-content: center;
@@ -96,14 +98,20 @@ export class DddCard extends DDD {
           background-color: var(--ddd-theme-default-beaverBlue);
           height: 50px;
           color: var(--ddd-theme-default-white);
-          border-radius: 8px;
-          border: 2px solid;
+          border-radius: var(--ddd-radius-sm);
+          border: var(--ddd-radius-sm);
           max-width: 450px;
           text-decoration: none;
-          font-size: 16px;
+          font-size: var(--ddd-font-size-4xs);
           width: 100%;
           cursor: pointer;
         }
+
+        .card button:hover {
+        background-color: var(--ddd-theme-primary);
+        border-color: var(--ddd-theme-primary);
+        cursor: pointer;
+      }
 
         @media (max-width: 1000px) {
           :host {
@@ -112,7 +120,7 @@ export class DddCard extends DDD {
           }
           .button {
             width: 100%;
-            padding: 8px;
+            padding: var(--ddd-spacing-2);
           }
         }
         @media (max-width: 1000px) {
@@ -121,7 +129,7 @@ export class DddCard extends DDD {
             padding: var(--ddd-spacing-4);
           }
           .button {
-            padding: 6px;
+            padding: var(--ddd-spacing-2);
           }
         }
 
@@ -139,19 +147,11 @@ export class DddCard extends DDD {
     return html`
       <div class="card">
         <img src="${this.image}" alt="${this.title || "Card image"}" />
-
         <div id="color-line"></div>
-
-        <h3>${this.title}</h3>
-
-          <p>${this.description}</p>
-   
         <div id=bottom-card>
-
-          
-
-          <button class="button" @click="${this.handleButtonClick}">Explore ></button>
-
+        <h3>${this.title}</h3>
+        <p>${this.description}</p>
+        <button class="button" @click="${this.handleButtonClick}">Explore ></button>
           </div>
       </div>
   </div>
