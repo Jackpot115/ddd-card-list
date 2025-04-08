@@ -53,6 +53,8 @@ export class DddCard extends DDD {
           transition: all 0.3s ease;
         }
 
+        
+
         .card img {
           width: auto;
           height: auto;
