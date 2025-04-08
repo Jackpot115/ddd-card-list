@@ -9,13 +9,12 @@ export class DddCard extends DDD {
 
   constructor() {
     super();
-    this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
+    this.title = "NO TITLE"
+    this.description = "NO DESCRIPTION"
+    this.link = ""
+    this.image = "https://hax.psu.edu/7d3549e0.png"
   }
+
 
   // Lit reactive properties
   static get properties() {
@@ -138,9 +137,6 @@ export class DddCard extends DDD {
     ];
   }
 
-  handleButtonClick() {
-    window.open("https://www.youtube.com", "_blank");
-  }
 
   // Lit render the HTML
   render() {
@@ -151,7 +147,8 @@ export class DddCard extends DDD {
         <div id=bottom-card>
         <h3>${this.title}</h3>
         <p>${this.description}</p>
-        <button class="button" @click="${this.handleButtonClick}">Explore ></button>
+        <a href="${this.link}" target="_blank">
+        <button class="button" link=${this.link}>Explore ></button></a>
           </div>
       </div>
   </div>
